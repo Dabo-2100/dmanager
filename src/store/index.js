@@ -9,6 +9,7 @@ export default createStore({
     LoaderIndex: 0,
     SideMenuIndex: 0,
     NotificationsMenuIndex: 0,
+    CurrentView: "DashboardView",
   },
   getters: {},
   mutations: {

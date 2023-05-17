@@ -6,7 +6,8 @@
             </section>
             <section id="MenuActions">
                 <ul id="Actions">
-                    <li v-for="Action in this.Menu_Actions" :key="Action">{{ Action['ArabicName'] }}</li>
+                    <li v-for="Action in this.Menu_Actions" :key="Action"
+                        @click="this.$store.state['CurrentView'] = Action['OpenTab']">{{ Action['ArabicName'] }}</li>
                 </ul>
             </section>
             <section id="LogOut">
@@ -27,10 +28,10 @@ export default {
             Api_Url: this.$store.state['Api_Url'],
             Menu_Actions: [
                 { ArabicName: "الصفحة الرئيسية", Name: "Home", OpenTab: "DashboardView", Icon: "" },
-                { ArabicName: "المشتريات", Name: "Purchase", OpenTab: "DashboardView", Icon: "" },
-                { ArabicName: "المبيعات", Name: "Sales", OpenTab: "DashboardView", Icon: "" },
-                { ArabicName: "المخازن", Name: "Inventory", OpenTab: "DashboardView", Icon: "" },
-                { ArabicName: "الحسابات", Name: "Accounting", OpenTab: "DashboardView", Icon: "" },
+                { ArabicName: "المشتريات", Name: "Purchase", OpenTab: "PurchaseView", Icon: "" },
+                { ArabicName: "المبيعات", Name: "Sales", OpenTab: "SalesView", Icon: "" },
+                { ArabicName: "المخازن", Name: "Inventory", OpenTab: "InventoryView", Icon: "" },
+                { ArabicName: "الحسابات", Name: "Accounting", OpenTab: "FinanceView", Icon: "" },
             ],
         };
     },
@@ -59,11 +60,19 @@ export default {
         padding: 0;
 
         li {
+            cursor: pointer;
             list-style: none;
             font-size: 1.2rem;
             color: white;
             padding: 0.5rem 1rem;
+            transition: all ease 300ms;
         }
+
+        li:hover {
+            color: rgba(187, 187, 187, 0.843);
+
+        }
+
     }
 }
 
